@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Lukas Lehmann">
 <meta name="dcterms.date" content="2023-04-18">
-<title>Introduction to Social Media Scraping</title>
+<title>quarto-inputbfc9f74f4b584ff4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -16,11 +16,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -31,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -45,43 +46,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -96,24 +67,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-f8dc6eab18fde03278982b0b35885446.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-204b2772f3db46f139c183eb16975411.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/animate-4.1.1/animate.min.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/quarto-contrib/animate-4.1.1/animate.min.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -122,8 +97,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HJEMN0LJY7"></script><script type="text/javascript">
 
@@ -138,7 +115,7 @@ gtag('config', 'G-HJEMN0LJY7', { 'anonymize_ip': true});
 <!-- Open Graph / Facebook --><meta property="og:type" content="website">
 <meta property="og:url" content="https://www.hertiecodingclub.com">
 <meta property="og:title" content="Introduction to Social Media Scraping">
-<meta property="og:description" content="Welcome to the Hertie Coding Club! Our goal as a club is to help everyone and between us learn coding skills and show that coding is for everyone, no matter our background.">
+<meta property="og:description" content="Learn the basic tools for scraping Twitter Data in R">
 <!-- Primary Meta Tags --><title>Hertie Coding Club - RStudio 101</title>
 <meta name="title" content="Hertie Coding Club - Enable Multithread with data.table in Mac/Intel chips">
 <meta name="description" content="Learn the basics of R: open a project, setting a working directory and navigate RStudio interface">
@@ -154,28 +131,31 @@ gtag('config', 'G-HJEMN0LJY7', { 'anonymize_ip': true});
 <style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
 <style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
 <style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
+<style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
+<style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../../images/hcc_final.png" alt="" class="navbar-logo"></a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"><i class="bi bi-house-fill" role="img">
+    <a class="nav-link" href="../../../index.html"> <i class="bi bi-house-fill" role="img">
 </i> 
- <span class="menu-text">Home</span></a>
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-solid-people-group--members" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-solid-people-group--members" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text"><i class="fa-solid fa-people-group" aria-label="people-group"></i> Members</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-fa-solid-people-group--members">
@@ -184,17 +164,13 @@ gtag('config', 'G-HJEMN0LJY7', { 'anonymize_ip': true});
  <span class="dropdown-text"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Team</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../../members/members/members.html">
- <span class="dropdown-text"><i class="fa-solid fa-users-rectangle" aria-label="users-rectangle"></i> Club Members</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../members/statute/statute.html">
  <span class="dropdown-text"><i class="fa-solid fa-scale-balanced" aria-label="scale-balanced"></i> Club Statutes</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="link" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-mortarboard-fill" role="img">
 </i> 
  <span class="menu-text">Learn</span>
@@ -215,24 +191,20 @@ gtag('config', 'G-HJEMN0LJY7', { 'anonymize_ip': true});
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../../material/index.html">
- <span class="menu-text"><i class="fa-solid fa-meteor" aria-label="meteor"></i> Material</span></a>
+    <a class="nav-link" href="../../../material/index.html"> 
+<span class="menu-text"><i class="fa-solid fa-meteor" aria-label="meteor"></i> Material</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../events/index.html"><i class="bi bi-calendar3" role="img">
+    <a class="nav-link" href="../../../events/index.html"> <i class="bi bi-calendar3" role="img">
 </i> 
- <span class="menu-text">Events</span></a>
+<span class="menu-text">Events</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../coding/index.html">
- <span class="menu-text"><i class="fa-solid fa-handshake-angle" aria-label="handshake-angle"></i> Coding peers</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../../news/index.html">
- <span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> News</span></a>
+    <a class="nav-link" href="../../../news/index.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> News</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-solid-laptop-code--about-us" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-solid-laptop-code--about-us" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> About us</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-fa-solid-laptop-code--about-us">
@@ -255,16 +227,14 @@ gtag('config', 'G-HJEMN0LJY7', { 'anonymize_ip': true});
     </ul>
 </li>
 </ul>
-<div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title"><span class="animate__animated animate__fadeInDown animate__delay-.6s" style="display: inline-block;">Introduction to Social Media Scraping</span></h1>
-            <p class="subtitle lead"><span class="animate__animated animate__fadeInDown animate__delay-.6s" style="display: inline-block;">Learn the basic tools for scraping Twitter Data in R</span></p>
+      <h1 class="title"><span class="animate__animated animate__fadeInDown" style="display: inline-block;">Introduction to Social Media Scraping</span></h1>
+            <p class="subtitle lead"><span class="animate__animated animate__fadeInDown" style="display: inline-block;">Learn the basic tools for scraping Twitter Data in R</span></p>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Twitter</div>
                 <div class="quarto-category">Webscraping</div>
@@ -333,12 +303,12 @@ gtag('config', 'G-HJEMN0LJY7', { 'anonymize_ip': true});
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="callout-important callout callout-style-default callout-captioned">
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 NEWS
 </div>
 </div>
@@ -355,7 +325,7 @@ NEWS
 <p>So the first thing we want to do is load in the packages we’ll be using to scrape and manipulate our data. The most important of those is rtweet, which is the one we’ll be using to interact with the Twitter API.</p>
 <p>In order to scrape tweets, you’ll need a Twitter developer account and have to make a Twitter app. This is actually a pretty simple process (and won’t require any coding). <a href="https://jtr13.github.io/cc21fall2/scrape-twitter-data-using-r.html">Here’s a step-by-step guide</a></p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">rtweet</span>, <span class="va">tidyverse</span>, <span class="va">ggplot2</span>, <span class="va">utils</span>, <span class="va">tm</span>, <span class="va">SnowballC</span>, <span class="va">caTools</span>, </span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pacman</span><span class="fu">::</span><span class="fu">p_load</span><span class="op">(</span><span class="va">rtweet</span>, <span class="va">tidyverse</span>, <span class="va">ggplot2</span>, <span class="va">utils</span>, <span class="va">tm</span>, <span class="va">SnowballC</span>, <span class="va">caTools</span>, </span>
 <span>               <span class="va">rpart</span>, <span class="va">topicmodels</span>, <span class="va">tidytext</span>, <span class="va">wordcloud</span>, <span class="va">lexicon</span>, <span class="va">reshape2</span>,</span>
 <span>               <span class="va">sentimentr</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -371,7 +341,6 @@ NEWS
 <p>Here are the Biden tweets. We show the first 6 entries of the <code>biden_tweets</code> database</p>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["created_at"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["id"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["id_str"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["text"],"name":[4],"type":["chr"],"align":["left"]},{"label":["full_text"],"name":[5],"type":["chr"],"align":["left"]},{"label":["truncated"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["entities"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["source"],"name":[8],"type":["chr"],"align":["left"]},{"label":["in_reply_to_status_id"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_status_id_str"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_user_id"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_user_id_str"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_screen_name"],"name":[13],"type":["chr"],"align":["left"]},{"label":["geo"],"name":[14],"type":["lgl"],"align":["right"]},{"label":["coordinates"],"name":[15],"type":["lgl"],"align":["right"]},{"label":["place"],"name":[16],"type":["lgl"],"align":["right"]},{"label":["contributors"],"name":[17],"type":["lgl"],"align":["right"]},{"label":["is_quote_status"],"name":[18],"type":["lgl"],"align":["right"]},{"label":["retweet_count"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["favorite_count"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["favorited"],"name":[21],"type":["lgl"],"align":["right"]},{"label":["favorited_by"],"name":[22],"type":["lgl"],"align":["right"]},{"label":["retweeted"],"name":[23],"type":["lgl"],"align":["right"]},{"label":["scopes"],"name":[24],"type":["lgl"],"align":["right"]},{"label":["lang"],"name":[25],"type":["chr"],"align":["left"]},{"label":["possibly_sensitive"],"name":[26],"type":["lgl"],"align":["right"]},{"label":["display_text_width"],"name":[27],"type":["lgl"],"align":["right"]},{"label":["display_text_range"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["retweeted_status"],"name":[29],"type":["lgl"],"align":["right"]},{"label":["quoted_status"],"name":[30],"type":["lgl"],"align":["right"]},{"label":["quoted_status_id"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["quoted_status_id_str"],"name":[32],"type":["dbl"],"align":["right"]},{"label":["quoted_status_permalink"],"name":[33],"type":["lgl"],"align":["right"]},{"label":["quote_count"],"name":[34],"type":["lgl"],"align":["right"]},{"label":["timestamp_ms"],"name":[35],"type":["lgl"],"align":["right"]},{"label":["reply_count"],"name":[36],"type":["lgl"],"align":["right"]},{"label":["filter_level"],"name":[37],"type":["lgl"],"align":["right"]},{"label":["metadata"],"name":[38],"type":["lgl"],"align":["right"]},{"label":["query"],"name":[39],"type":["lgl"],"align":["right"]},{"label":["withheld_scope"],"name":[40],"type":["lgl"],"align":["right"]},{"label":["withheld_copyright"],"name":[41],"type":["lgl"],"align":["right"]},{"label":["withheld_in_countries"],"name":[42],"type":["lgl"],"align":["right"]},{"label":["possibly_sensitive_appealable"],"name":[43],"type":["lgl"],"align":["right"]}],"data":[{"1":"2023-03-17 03:14:37","2":"1.636567e+18","3":"1.636567e+18","4":"Sanofi is now the latest manufacturer to cap the cost of insulin for everyone.\\n \\nThat means three of America's largest insulin producers agreed to reduce their prices following my call to expand my $35 monthly cap for seniors to all Americans.\\n\\nCongress, let's make it law. https://t.co/AVtEQUtwr0","5":"Sanofi is now the latest manufacturer to cap the cost of insulin for everyone.\\n \\nThat means three of America's largest insulin producers agreed to reduce their prices following my call to expand my $35 monthly cap for seniors to all Americans.\\n\\nCongress, let's make it law. https://t.co/AVtEQUtwr0","6":"FALSE","7":"NA","8":"<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"TRUE","19":"1721","20":"8696","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"273","29":"NA","30":"NA","31":"1.636495e+18","32":"1.636495e+18","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-17 01:00:49","2":"1.636533e+18","3":"1.636533e+18","4":"If MAGA Republicans in Congress get their way, as many as one hundred million hardworking Americans could lose protections to their health care. https://t.co/lwbQSFwqWv","5":"If MAGA Republicans in Congress get their way, as many as one hundred million hardworking Americans could lose protections to their health care. https://t.co/lwbQSFwqWv","6":"FALSE","7":"NA","8":"<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">The White House<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"1394","20":"4420","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"144","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-16 21:47:02","2":"1.636484e+18","3":"1.636484e+18","4":"We lowered health care costs and made it easier to sign up for the Affordable Care Act.\\n \\nNow, more Americans have health insurance than ever.","5":"We lowered health care costs and made it easier to sign up for the Affordable Care Act.\\n \\nNow, more Americans have health insurance than ever.","6":"FALSE","7":"NA","8":"<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">The White House<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"935","20":"4270","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"NA","27":"NA","28":"142","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-16 19:45:00","2":"1.636454e+18","3":"1.636454e+18","4":"For two years, our Administration has led the way on deploying cost-cutting clean energy investments – from tax credits for rooftop solar and electric vehicles to environmental justice solutions to ease burdens on families.\\n\\nMy budget will build on that progress.","5":"For two years, our Administration has led the way on deploying cost-cutting clean energy investments – from tax credits for rooftop solar and electric vehicles to environmental justice solutions to ease burdens on families.\\n\\nMy budget will build on that progress.","6":"FALSE","7":"NA","8":"<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">The White House<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"704","20":"3172","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"NA","27":"NA","28":"263","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-16 19:22:47","2":"1.636448e+18","3":"1.636448e+18","4":"No working-class American should pay more in taxes than a billionaire.\\n\\nTake it from a few Philly union workers: https://t.co/4HecdLWzpN","5":"No working-class American should pay more in taxes than a billionaire.\\n\\nTake it from a few Philly union workers: https://t.co/4HecdLWzpN","6":"FALSE","7":"NA","8":"<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">The White House<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"1587","20":"7263","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"112","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-16 16:34:03","2":"1.636405e+18","3":"1.636405e+18","4":"Good luck to every team in this year's NCAA tournament. \\n\\nI’ve got Arizona in the men’s tournament and Villanova in the women’s – and as you know, in this household, Villanova always wins. https://t.co/iILzABTCuo","5":"Good luck to every team in this year's NCAA tournament. \\n\\nI’ve got Arizona in the men’s tournament and Villanova in the women’s – and as you know, in this household, Villanova always wins. https://t.co/iILzABTCuo","6":"FALSE","7":"NA","8":"<a href=\"https://www.sprinklr.com\" rel=\"nofollow\">The White House<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"1525","20":"15398","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"188","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -383,7 +352,6 @@ NEWS
 <p>And here are the databases with words related to green. The <code>green</code> database.</p>
 <div class="cell">
 <div class="cell-output-display">
-
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["created_at"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["id"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["id_str"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["text"],"name":[4],"type":["chr"],"align":["left"]},{"label":["full_text"],"name":[5],"type":["chr"],"align":["left"]},{"label":["truncated"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["entities"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["source"],"name":[8],"type":["chr"],"align":["left"]},{"label":["in_reply_to_status_id"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_status_id_str"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_user_id"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_user_id_str"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["in_reply_to_screen_name"],"name":[13],"type":["chr"],"align":["left"]},{"label":["geo"],"name":[14],"type":["lgl"],"align":["right"]},{"label":["coordinates"],"name":[15],"type":["lgl"],"align":["right"]},{"label":["place"],"name":[16],"type":["lgl"],"align":["right"]},{"label":["contributors"],"name":[17],"type":["lgl"],"align":["right"]},{"label":["is_quote_status"],"name":[18],"type":["lgl"],"align":["right"]},{"label":["retweet_count"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["favorite_count"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["favorited"],"name":[21],"type":["lgl"],"align":["right"]},{"label":["favorited_by"],"name":[22],"type":["lgl"],"align":["right"]},{"label":["retweeted"],"name":[23],"type":["lgl"],"align":["right"]},{"label":["scopes"],"name":[24],"type":["lgl"],"align":["right"]},{"label":["lang"],"name":[25],"type":["chr"],"align":["left"]},{"label":["possibly_sensitive"],"name":[26],"type":["lgl"],"align":["right"]},{"label":["display_text_width"],"name":[27],"type":["lgl"],"align":["right"]},{"label":["display_text_range"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["retweeted_status"],"name":[29],"type":["lgl"],"align":["right"]},{"label":["quoted_status"],"name":[30],"type":["lgl"],"align":["right"]},{"label":["quoted_status_id"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["quoted_status_id_str"],"name":[32],"type":["dbl"],"align":["right"]},{"label":["quoted_status_permalink"],"name":[33],"type":["lgl"],"align":["right"]},{"label":["quote_count"],"name":[34],"type":["lgl"],"align":["right"]},{"label":["timestamp_ms"],"name":[35],"type":["lgl"],"align":["right"]},{"label":["reply_count"],"name":[36],"type":["lgl"],"align":["right"]},{"label":["filter_level"],"name":[37],"type":["lgl"],"align":["right"]},{"label":["metadata"],"name":[38],"type":["lgl"],"align":["right"]},{"label":["query"],"name":[39],"type":["lgl"],"align":["right"]},{"label":["withheld_scope"],"name":[40],"type":["lgl"],"align":["right"]},{"label":["withheld_copyright"],"name":[41],"type":["lgl"],"align":["right"]},{"label":["withheld_in_countries"],"name":[42],"type":["lgl"],"align":["right"]},{"label":["possibly_sensitive_appealable"],"name":[43],"type":["lgl"],"align":["right"]}],"data":[{"1":"2023-03-15 14:16:36","2":"1.636008e+18","3":"1.636008e+18","4":"Plymouth City Council looked at this green space in their City &amp; thought 'You know what? More concrete here will be awesome!' \\n Apparently the Council went ahead &amp; destroyed 100 mature trees last night, I'm disgusted!😡😡\\nLet's make them famous..\\n#PlymouthCityCouncilTreeMassacre https://t.co/HZnhbaw2qB","5":"Plymouth City Council looked at this green space in their City &amp; thought 'You know what? More concrete here will be awesome!' \\n Apparently the Council went ahead &amp; destroyed 100 mature trees last night, I'm disgusted!😡😡\\nLet's make them famous..\\n#PlymouthCityCouncilTreeMassacre https://t.co/HZnhbaw2qB","6":"FALSE","7":"NA","8":"<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"TRUE","19":"1793","20":"2962","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"285","29":"NA","30":"NA","31":"1.634279e+18","32":"1.634279e+18","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-15 22:27:10","2":"1.636132e+18","3":"1.636132e+18","4":"🇳🇱 Really bad news. The first election results are in: The ruling parties suffered some losses, but with the help of the Labour Party and the green-left they will still be able to form a majority in the Senate to pass the nitrogen policies, including expropriation. #DutchFarmers","5":"🇳🇱 Really bad news. The first election results are in: The ruling parties suffered some losses, but with the help of the Labour Party and the green-left they will still be able to form a majority in the Senate to pass the nitrogen policies, including expropriation. #DutchFarmers","6":"FALSE","7":"NA","8":"<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"3155","20":"11096","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"NA","27":"NA","28":"279","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-16 11:10:44","2":"1.636324e+18","3":"1.636324e+18","4":"Compare &amp; contrast.\\n  Top is Plymouth City centre in all its green glory.\\n Bottom is Plymouth City centre today, after @plymouthcc snuck out in the night to destroy over 100 trees... it looks like a scene from #TheLastOfUs 😱 \\nWho's angry? 🤬\\n#PlymouthCityCouncilTreeMassacre https://t.co/hTv2baRFVE","5":"Compare &amp; contrast.\\n  Top is Plymouth City centre in all its green glory.\\n Bottom is Plymouth City centre today, after @plymouthcc snuck out in the night to destroy over 100 trees... it looks like a scene from #TheLastOfUs 😱 \\nWho's angry? 🤬\\n#PlymouthCityCouncilTreeMassacre https://t.co/hTv2baRFVE","6":"FALSE","7":"NA","8":"<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"1288","20":"3515","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"277","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-17 01:09:24","2":"1.636535e+18","3":"1.636535e+18","4":"RT @420: keep it green https://t.co/zipq7GjUjs","5":"RT @420: keep it green https://t.co/zipq7GjUjs","6":"FALSE","7":"NA","8":"<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"881","20":"0","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"46","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-17 01:09:23","2":"1.636535e+18","3":"1.636535e+18","4":"Green mountains are always accompanied by green waters  haemcupature .1231 \\n#纹身 #胸推 #道具大赛 https://t.co/KZJti0SlTr","5":"Green mountains are always accompanied by green waters  haemcupature .1231 \\n#纹身 #胸推 #道具大赛 https://t.co/KZJti0SlTr","6":"FALSE","7":"NA","8":"<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"0","20":"0","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"89","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"},{"1":"2023-03-17 01:09:22","2":"1.636535e+18","3":"1.636535e+18","4":"Green $50 a line tap in https://t.co/PNiTEFxglV","5":"Green $50 a line tap in https://t.co/PNiTEFxglV","6":"FALSE","7":"NA","8":"<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone<\/a>","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"FALSE","19":"0","20":"0","21":"FALSE","22":"NA","23":"FALSE","24":"NA","25":"en","26":"FALSE","27":"NA","28":"23","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"NA","41":"NA","42":"NA","43":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -397,7 +365,7 @@ NEWS
 <hr>
 <p>Now that we have our tweets, let’s construct a time series plot that shows the frequency of tweets by President Joe Biden over time. The data is aggregated using two-week intervals. The plot displays the number of tweets on the y-axis and time on the x-axis. Each point on the plot represents the number of tweets for a particular two-week interval.</p>
 <div class="cell">
-<details><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create time series plot using ts_plot() function from tsbox package</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create time series plot using ts_plot() function from tsbox package</span></span>
 <span><span class="co"># "2 weeks" specifies the interval for aggregating the data</span></span>
 <span><span class="va">biden_tweets</span> <span class="op">%&gt;%</span> <span class="fu">ts_plot</span><span class="op">(</span><span class="st">"2 weeks"</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="co"># Customize plot appearance using ggplot2 functions</span></span>
@@ -410,7 +378,7 @@ NEWS
 <span><span class="fu">geom_point</span><span class="op">(</span>size<span class="op">=</span><span class="fl">6</span><span class="op">)</span> <span class="op">+</span> <span class="co"># add points to plot to show tweet count at each interval</span></span>
 <span><span class="fu">geom_line</span><span class="op">(</span>linewidth<span class="op">=</span><span class="fl">1.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure"><p><a href="index_files/figure-html/first_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/first_plot-1.png" class="img-fluid figure-img" style="width:80.0%"></a></p>
 </figure>
 </div>
@@ -491,13 +459,13 @@ NEWS
 </section></section><section id="top-10-terms-by-topic" class="level1"><h1>Top 10 Terms by Topic</h1>
 <hr>
 <div class="cell">
-<details><summary>Code</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/tidytext">tidytext</a></span><span class="op">)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://juliasilge.github.io/tidytext/">tidytext</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggtext/">ggtext</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Reorder the terms within each topic based on their probability (beta) values</span></span>
 <span><span class="va">green_top_terms1</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>term <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/reorder_within.html">reorder_within</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">beta</span>, <span class="va">topic</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>term <span class="op">=</span> <span class="fu">reorder_within</span><span class="op">(</span><span class="va">term</span>, <span class="va">beta</span>, <span class="va">topic</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span><span class="co">#Create a bar plot of the term probabilities for each topic</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">beta</span>, <span class="va">term</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span>, width <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
@@ -508,13 +476,13 @@ NEWS
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>strip.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="co">#Apply a custom scale for the y-axis that preserves the within-topic ordering of terms</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/reorder_within.html">scale_y_reordered</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_reordered</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Top 10 Terms by Topic"</span>,</span>
 <span>       x <span class="op">=</span> <span class="st">"Term Probability"</span>,</span>
 <span>       y <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>       caption <span class="op">=</span> <span class="st">"Source: LDA Topic Model of Green Energy Tweets"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure"><p><a href="index_files/figure-html/second_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/second_plot-1.png" class="img-fluid figure-img" style="width:80.0%"></a></p>
 </figure>
 </div>
@@ -529,7 +497,7 @@ NEWS
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">words_data</span> <span class="op">&lt;-</span> <span class="va">biden_tweets</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">text</span><span class="op">)</span><span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> </span>
+<span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> </span>
 <span><span class="co">#Let's get rid of some words associated with links and things that cause errors</span></span>
 <span><span class="va">words_data</span> <span class="op">&lt;-</span> <span class="va">words_data</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">word</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'https'</span>, <span class="st">'t.co'</span>, <span class="st">'he\'s'</span>, <span class="st">'i\'m'</span>, <span class="st">'it\'s'</span><span class="op">)</span><span class="op">)</span></span>
@@ -541,7 +509,7 @@ NEWS
 <p>&nbsp;</p>
 <section id="word-cloud-of-biden-tweets" class="level2"><h2 class="anchored" data-anchor-id="word-cloud-of-biden-tweets">Word Cloud of Biden Tweets</h2>
 <div class="cell">
-<details><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create custom color palette</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create custom color palette</span></span>
 <span><span class="va">my_palette</span> <span class="op">&lt;-</span> <span class="fu">brewer.pal</span><span class="op">(</span><span class="fl">8</span>, <span class="st">"Dark2"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create word cloud with larger font size and custom layout</span></span>
@@ -555,7 +523,7 @@ NEWS
 <span>          random.color <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>          main <span class="op">=</span> <span class="st">"Word Cloud of Biden Tweets"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure"><p><a href="index_files/figure-html/third_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/third_plot-1.png" class="img-fluid figure-img" style="width:80.0%"></a></p>
 </figure>
 </div>
@@ -568,18 +536,18 @@ NEWS
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Select and tokenize words</span></span>
 <span><span class="va">words_data</span> <span class="op">&lt;-</span> <span class="va">biden_tweets</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">text</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> </span>
+<span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co">#Get sentiment scores for each word using the bing lexicon</span></span>
 <span><span class="va">sentiment_scores</span> <span class="op">&lt;-</span> <span class="va">words_data2</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Count the number of words in each sentiment category</span></span>
 <span><span class="va">sentiment_counts</span> <span class="op">&lt;-</span> <span class="va">sentiment_scores</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Create a list of profanity words to remove from the dataset</span></span>
-<span><span class="va">profanity_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">lexicon</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/lexicon/man/profanity_alvarez.html">profanity_alvarez</a></span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">profanity_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="fu">lexicon</span><span class="fu">::</span><span class="va">profanity_alvarez</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#Filter out stop words and profanity words from the dataset</span></span>
 <span><span class="va">filtered_words_data</span> <span class="op">&lt;-</span> <span class="va">words_data</span> <span class="op">%&gt;%</span></span>
@@ -587,12 +555,12 @@ NEWS
 <span></span>
 <span><span class="co">#Get sentiment scores for each filtered word using the bing lexicon</span></span>
 <span><span class="va">filtered_sentiment_scores</span> <span class="op">&lt;-</span> <span class="va">filtered_words_data</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">inner_join</span><span class="op">(</span><span class="fu">get_sentiments</span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;</p>
 </section><section id="cloud" class="level2"><h2 class="anchored" data-anchor-id="cloud">Cloud</h2>
 <div class="cell">
-<details><summary>Code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Count the number of filtered words with each sentiment score</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#Count the number of filtered words with each sentiment score</span></span>
 <span><span class="va">word_sentiment_counts</span> <span class="op">&lt;-</span> <span class="va">filtered_sentiment_scores</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">word</span>, <span class="va">sentiment</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">acast</span><span class="op">(</span><span class="va">word</span> <span class="op">~</span> <span class="va">sentiment</span>, value.var <span class="op">=</span> <span class="st">"n"</span>, fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -602,7 +570,7 @@ NEWS
 <span>                  colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>,</span>
 <span>                  max.words <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure"><p><a href="index_files/figure-html/fourth_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/fourth_plot-1.png" class="img-fluid figure-img" style="width:80.0%"></a></p>
 </figure>
 </div>
@@ -631,7 +599,7 @@ NEWS
 </section><section id="sentiment-analysis-of-bidens-tweets" class="level1"><h1>Sentiment Analysis of Biden’s Tweets</h1>
 <p>Finally, the results are visualized in a bar chart using the ggplot2 package.</p>
 <div class="cell">
-<details><summary>Code</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">custom_palette</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FF6361"</span>,<span class="st">"#9B9B9B"</span>, <span class="st">"#00A693"</span><span class="op">)</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">custom_palette</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#FF6361"</span>,<span class="st">"#9B9B9B"</span>, <span class="st">"#00A693"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_sentiment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">type_tweet</span>, y <span class="op">=</span> <span class="va">values</span>, fill <span class="op">=</span> <span class="va">type_tweet</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.7</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -645,7 +613,7 @@ NEWS
 <span>        panel.grid.major.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"gray80"</span><span class="op">)</span>,</span>
 <span>        panel.grid.minor <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div>
 <figure class="figure"><p><a href="index_files/figure-html/fifth_plot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/fifth_plot-1.png" class="img-fluid figure-img" style="width:80.0%"></a></p>
 </figure>
 </div>
@@ -658,12 +626,12 @@ NEWS
 <p>&nbsp;</p>
 </section><section id="references" class="level1"><h1>References</h1>
 <hr>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -693,121 +661,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -815,12 +668,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -852,11 +708,53 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.hertiecodingclub\.com\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -866,8 +764,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -879,9 +786,244 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -919,20 +1061,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/https:\/\/www\.hertiecodingclub\.com/);
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
@@ -940,41 +1068,88 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
-    <a class="nav-link" href="https://creativecommons.org/licenses/by/2.0/"><i class="fa-regular fa-copyright" aria-label="copyright"></i> <i class="fa-solid fa-circle-user" aria-label="circle-user"></i> 2023 HCC | J.Roa</a>
+    <a class="nav-link" href="https://creativecommons.org/licenses/by/2.0/">
+<p><i class="fa-regular fa-copyright" aria-label="copyright"></i> <i class="fa-solid fa-circle-user" aria-label="circle-user"></i> 2024 HCC | J.Roa</p>
+</a>
   </li>  
 </ul>
 </div>   
-      <div class="nav-footer-center">
-        <ul class="footer-items list-unstyled">
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
 <li class="nav-item">
-    <a class="nav-link" href="https://quarto.org"><i class="fa-brands fa-phoenix-framework fa-lg" aria-label="phoenix-framework"></i> Quarto engine</a>
+    <a class="nav-link" href="https://quarto.org">
+<p>· <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" class="img-fluid" alt="Quarto" width="65"></a> engine ·</p>
+</a>
   </li>  
 </ul>
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
-    <a class="nav-link" href="mailto:hertiecodingclub@gmail.com"><i class="fa-solid fa-square-envelope fa-lg" aria-label="square-envelope"></i></a>
+    <a class="nav-link" href="mailto:hertiecodingclub@gmail.com">
+<p><i class="fa-solid fa-square-envelope fa-lg" aria-label="square-envelope"></i></p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="http://hertiecodingclub.slack.com"><i class="fa-brands fa-slack fa-lg" aria-label="slack"></i></a>
+    <a class="nav-link" href="http://hertiecodingclub.slack.com">
+<p><i class="fa-brands fa-slack fa-lg" aria-label="slack"></i></p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://github.com/Hertie-Coding-Club"><i class="fa-brands fa-github fa-lg" aria-label="github"></i></a>
+    <a class="nav-link" href="https://github.com/Hertie-Coding-Club">
+<p><i class="fa-brands fa-github fa-lg" aria-label="github"></i></p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://twitter.com/HertieCodingCLB"><i class="fa-brands fa-twitter fa-lg" aria-label="twitter"></i></a>
+    <a class="nav-link" href="https://twitter.com/HertieCodingCLB">
+<p><i class="fa-brands fa-twitter fa-lg" aria-label="twitter"></i></p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://www.instagram.com/hertiecodingclub/"><i class="fa-brands fa-instagram fa-lg" aria-label="instagram"></i></a>
+    <a class="nav-link" href="https://www.instagram.com/hertiecodingclub/">
+<p><i class="fa-brands fa-instagram fa-lg" aria-label="instagram"></i></p>
+</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://youtube.com/@hertiecodingclub"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i></a>
+    <a class="nav-link" href="https://youtube.com/@hertiecodingclub">
+<p><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i></p>
+</a>
   </li>  
 </ul>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":true,"closeEffect":"fade","descPosition":"left","skin":"lightwidth","selector":".lightbox","openEffect":"fade"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"fade","descPosition":"left","loop":false,"openEffect":"fade","selector":".lightbox","skin":"lightwidth"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 <script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>

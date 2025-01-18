@@ -1,32 +1,15 @@
 [
   {
-    "listing": "/learn/i2ds.html",
+    "listing": "/material/Resources/indexp.html",
     "items": [
-      "/learn/I2DS/i2ds2021/index.html",
-      "/learn/I2DS/i2ds2022/index.html"
+      "/material/Resources/edx/index.html",
+      "/material/Resources/kaggle/index.html",
+      "/material/Resources/dataquest/index.html"
     ]
   },
   {
     "listing": "/learn/rstudio/objects/index.html",
     "items": []
-  },
-  {
-    "listing": "/learn/python.html",
-    "items": [
-      "/learn/python/pdf_to_text/index.html"
-    ]
-  },
-  {
-    "listing": "/learn/rstudio.html",
-    "items": [
-      "/learn/rstudio/r_shortcuts/index.html",
-      "/learn/rstudio/stata_to_r/index.html",
-      "/learn/rstudio/social_media_scraping/index.html",
-      "/learn/rstudio/objects/index.html",
-      "/learn/rstudio/rstudio101/index.html",
-      "/learn/rstudio/Install-r-studio/index.html",
-      "/learn/rstudio/Multithreading/index.html"
-    ]
   },
   {
     "listing": "/index.html",
@@ -67,12 +50,6 @@
     ]
   },
   {
-    "listing": "/news/index.html",
-    "items": [
-      "/news/welcome_website/index.html"
-    ]
-  },
-  {
     "listing": "/about_us/hertieclubs.html",
     "items": [
       "/about_us/hertieclubs/kinoclub/index.html"
@@ -89,11 +66,28 @@
     ]
   },
   {
-    "listing": "/material/Resources/indexp.html",
+    "listing": "/learn/i2ds.html",
     "items": [
-      "/material/Resources/edx/index.html",
-      "/material/Resources/kaggle/index.html",
-      "/material/Resources/dataquest/index.html"
+      "/learn/I2DS/i2ds2021/index.html",
+      "/learn/I2DS/i2ds2022/index.html"
+    ]
+  },
+  {
+    "listing": "/learn/python.html",
+    "items": [
+      "/learn/python/pdf_to_text/index.html"
+    ]
+  },
+  {
+    "listing": "/learn/rstudio.html",
+    "items": [
+      "/learn/rstudio/r_shortcuts/index.html",
+      "/learn/rstudio/stata_to_r/index.html",
+      "/learn/rstudio/social_media_scraping/index.html",
+      "/learn/rstudio/objects/index.html",
+      "/learn/rstudio/rstudio101/index.html",
+      "/learn/rstudio/Install-r-studio/index.html",
+      "/learn/rstudio/Multithreading/index.html"
     ]
   },
   {
@@ -115,6 +109,16 @@
     ]
   },
   {
+    "listing": "/material/Certifications/indexp.html",
+    "items": [
+      "/material/Certifications/microsoft_ds/index.html",
+      "/material/Certifications/google_cert_ds/index.html",
+      "/material/Certifications/cisco_pcap/index.html",
+      "/material/Certifications/freecodecamp/index.html",
+      "/material/Certifications/IBM_data_analyst/index.html"
+    ]
+  },
+  {
     "listing": "/material/index.html",
     "items": [
       "/material/Books/indexp.html",
@@ -123,13 +127,9 @@
     ]
   },
   {
-    "listing": "/material/Certifications/indexp.html",
+    "listing": "/news/index.html",
     "items": [
-      "/material/Certifications/microsoft_ds/index.html",
-      "/material/Certifications/google_cert_ds/index.html",
-      "/material/Certifications/cisco_pcap/index.html",
-      "/material/Certifications/freecodecamp/index.html",
-      "/material/Certifications/IBM_data_analyst/index.html"
+      "/news/welcome_website/index.html"
     ]
   }
 ]
